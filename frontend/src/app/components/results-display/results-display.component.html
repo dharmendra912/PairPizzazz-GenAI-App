@@ -1,0 +1,39 @@
+<div class="results-container" *ngIf="!isLoading && !error">
+  <div class="result-content">
+    <div class="result-header">
+      <i class="bi bi-heart-fill heart-icon"></i>
+      <h3>Your Connection</h3>
+      <i class="bi bi-heart-fill heart-icon"></i>
+    </div>
+    <div class="result-body">
+      <div class="result-text">
+        {{ result }}
+      </div>
+      <div class="result-decoration">
+        <i class="bi bi-flower1"></i>
+        <i class="bi bi-stars"></i>
+        <i class="bi bi-heart-fill"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="loading-container" *ngIf="isLoading">
+  <div class="loading-spinner">
+    <i class="bi bi-heart-fill"></i>
+    <i class="bi bi-heart-fill"></i>
+    <i class="bi bi-heart-fill"></i>
+  </div>
+  <p>Discovering your connection...</p>
+</div>
+
+<div class="error-container" *ngIf="error">
+  <div class="error-content">
+    <i class="bi bi-emoji-frown"></i>
+    <p>{{ error }}</p>
+    <button (click)="onRetry.emit()" class="retry-button">
+      <i class="bi bi-arrow-clockwise"></i>
+      Try Again
+    </button>
+  </div>
+</div> 

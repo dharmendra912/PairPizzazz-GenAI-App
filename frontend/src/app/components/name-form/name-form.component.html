@@ -1,0 +1,56 @@
+<div class="form-container">
+  <div class="form-header">
+    <i class="bi bi-heart-fill heart-icon"></i>
+    <h2>Discover Your Connection</h2>
+    <i class="bi bi-heart-fill heart-icon"></i>
+  </div>
+  <form [formGroup]="nameForm" (ngSubmit)="onSubmit()" class="name-form">
+    <div class="form-group">
+      <label for="name1">
+        <i class="bi bi-person-heart"></i>
+        First Name
+      </label>
+      <input
+        type="text"
+        id="name1"
+        formControlName="name1"
+        placeholder="Enter first name"
+        [class.is-invalid]="name1.invalid && (name1.dirty || name1.touched)"
+      >
+      <div class="invalid-feedback" *ngIf="name1.invalid && (name1.dirty || name1.touched)">
+        <span *ngIf="name1.errors?.['required']">First name is required</span>
+        <span *ngIf="name1.errors?.['minlength']">First name must be at least 2 characters</span>
+        <span *ngIf="name1.errors?.['maxlength']">First name must be at most 50 characters</span>
+        <span *ngIf="name1.errors?.['pattern']">First name can only contain letters</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name2">
+        <i class="bi bi-person-heart"></i>
+        Second Name
+      </label>
+      <input
+        type="text"
+        id="name2"
+        formControlName="name2"
+        placeholder="Enter second name"
+        [class.is-invalid]="name2.invalid && (name2.dirty || name2.touched)"
+      >
+      <div class="invalid-feedback" *ngIf="name2.invalid && (name2.dirty || name2.touched)">
+        <span *ngIf="name2.errors?.['required']">Second name is required</span>
+        <span *ngIf="name2.errors?.['minlength']">Second name must be at least 2 characters</span>
+        <span *ngIf="name2.errors?.['maxlength']">Second name must be at most 50 characters</span>
+        <span *ngIf="name2.errors?.['pattern']">Second name can only contain letters</span>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="nameForm.invalid || isLoading" class="submit-button">
+        <i class="bi bi-heart-fill"></i>
+        Discover Your Connection
+        <i class="bi bi-heart-fill"></i>
+      </button>
+    </div>
+  </form>
+</div> 

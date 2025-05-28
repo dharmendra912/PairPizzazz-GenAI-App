@@ -1,0 +1,124 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="app-container animate-fade-in">
+  <router-outlet></router-outlet>
+</div>
+
+<style>
+  :root {
+    --primary-color: #7b509c;
+    --secondary-color: #9b6bb7;
+    --accent-color: #e0d6e9;
+    --text-color: #2c3e50;
+    --font-fancy: 'Playfair Display', serif;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+  }
+
+  .app-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    padding: 2rem 0;
+  }
+
+  .content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .app-title {
+    font-family: var(--font-fancy);
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 2px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 3px 6px rgba(138, 77, 124, 0.2);
+    display: inline-block;
+    transform: rotate(-2deg);
+  }
+
+  .accent-text {
+    color: var(--secondary-color);
+    text-shadow: 3px 3px 6px rgba(138, 77, 124, 0.2);
+    display: inline-block;
+    transform: rotate(2deg);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.8s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .app-container {
+      padding: 1rem 0;
+    }
+
+    .app-title {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .app-title {
+      font-size: 3rem;
+    }
+  }
+
+  /* Touch Device Optimizations */
+  @media (hover: none) {
+    .app-title {
+      text-shadow: none;
+    }
+  }
+</style>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

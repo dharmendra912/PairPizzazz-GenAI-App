@@ -1,0 +1,59 @@
+# Root level ignores
+.DS_Store
+.env
+*.log
+.idea/
+.vscode/
+
+# Frontend (Angular) ignores
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.vscode/
+frontend/.DS_Store
+frontend/coverage/
+frontend/.env
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Backend (Spring Boot) ignores
+backend/target/
+backend/.mvn/
+backend/.DS_Store
+backend/.idea/
+backend/*.iml
+backend/*.iws
+backend/*.ipr
+backend/.settings/
+backend/.project
+backend/.classpath
+backend/.factorypath
+backend/.springBeans
+backend/.sts4-cache/
+backend/logs/
+backend/*.log
+
+# Build output
+**/build/
+**/out/
+**/bin/
+**/dist/
+
+# IDE specific files
+**/.idea/
+**/.vscode/
+**/*.iml
+**/*.iws
+**/*.ipr
+**/.settings/
+**/.project
+**/.classpath
+**/.factorypath
+**/.springBeans
+**/.sts4-cache/
+
+# System files
+**/.DS_Store
+**/Thumbs.db
