@@ -1,8 +1,6 @@
 services:
   - type: web
     name: spring-backend
-    env: java
     plan: free
     rootDir: backend
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/*.jar
+    dockerfilePath: Dockerfile
