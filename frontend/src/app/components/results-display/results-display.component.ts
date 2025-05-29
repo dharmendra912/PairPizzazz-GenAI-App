@@ -8,13 +8,15 @@ import { CommonModule } from '@angular/common';
   template: `
     <div class="results-wrapper animate-fade-in">
       @if (isLoading) {
-        <div class="loading-container animate-pulse">
-          <div class="ai-loading">
-            <i class="bi bi-cpu-fill"></i>
-            <i class="bi bi-robot"></i>
-            <i class="bi bi-braces-asterisk"></i>
+        <div class="loading-overlay">
+          <div class="loading-container animate-pulse">
+            <div class="ai-loading">
+              <i class="bi bi-cpu-fill"></i>
+              <i class="bi bi-robot"></i>
+              <i class="bi bi-braces-asterisk"></i>
+            </div>
+            <p class="loading-text">AI is analyzing your connection...</p>
           </div>
-          <p class="loading-text">AI is analyzing your connection...</p>
         </div>
       } @else if (error) {
         <div class="error-container animate-slide-in">
@@ -42,23 +44,47 @@ import { CommonModule } from '@angular/common';
       max-width: 600px;
       margin: 0 auto;
       padding: 1rem;
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
 
     .loading-container {
       text-align: center;
       padding: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(123, 80, 156, 0.1);
+      width: 100%;
+      max-width: 400px;
     }
 
     .ai-loading {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .ai-loading i {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--primary-color);
       animation: aiPulse 1.5s ease-in-out infinite;
     }
@@ -94,7 +120,8 @@ import { CommonModule } from '@angular/common';
       margin-top: 1rem;
       color: var(--text-color);
       font-family: var(--font-heading);
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      font-weight: 500;
     }
 
     .error-container {
@@ -104,10 +131,11 @@ import { CommonModule } from '@angular/common';
       padding: 2rem;
       text-align: center;
       box-shadow: 0 8px 32px rgba(123, 80, 156, 0.1);
+      width: 100%;
     }
 
     .error-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: var(--error-color);
       margin-bottom: 1rem;
     }
@@ -143,6 +171,7 @@ import { CommonModule } from '@angular/common';
       border-radius: 15px;
       padding: 2rem;
       box-shadow: 0 8px 32px rgba(123, 80, 156, 0.1);
+      width: 100%;
     }
 
     .result-title {
@@ -246,6 +275,19 @@ import { CommonModule } from '@angular/common';
     @media (max-width: 576px) {
       .results-wrapper {
         padding: 0.5rem;
+        min-height: 250px;
+      }
+
+      .loading-container {
+        padding: 1.5rem;
+      }
+
+      .ai-loading i {
+        font-size: 2rem;
+      }
+
+      .loading-text {
+        font-size: 1.1rem;
       }
 
       .result-card {
