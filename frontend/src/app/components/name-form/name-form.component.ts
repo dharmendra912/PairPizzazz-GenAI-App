@@ -17,7 +17,7 @@ interface NameConnectionResponse {
         <h2 class="text-center mb-4 animate-fade-in fancy-title">Love Connection</h2>
         <form [formGroup]="nameForm" (ngSubmit)="onSubmit()">
           <div class="form-group mb-4 animate-slide-in">
-            <label for="name1" class="form-label fancy-label">Your Name</label>
+            <label for="name1" class="form-label fancy-label">Your First Name</label>
             <input
               type="text"
               id="name1"
@@ -50,7 +50,7 @@ interface NameConnectionResponse {
           </div>
 
           <div class="form-group mb-4 animate-slide-in" style="animation-delay: 0.2s">
-            <label for="name2" class="form-label fancy-label">Your Crush/Partner's Name</label>
+            <label for="name2" class="form-label fancy-label">Your Crush/Partner's First Name</label>
             <input
               type="text"
               id="name2"
