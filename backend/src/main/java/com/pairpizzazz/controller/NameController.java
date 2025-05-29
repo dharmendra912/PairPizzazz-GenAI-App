@@ -23,6 +23,11 @@ public class NameController {
         logger.debug("NameController initialized");
     }
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Success");
+    }
+
     @GetMapping
     public ResponseEntity<Map<String, String>> getNamesConnection(
             @RequestParam String name1,

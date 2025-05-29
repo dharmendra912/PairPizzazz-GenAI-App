@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimatedBackgroundComponent } from './components/animated-background/animated-background.component';
+import { HealthService } from './services/health.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,13 @@ import { AnimatedBackgroundComponent } from './components/animated-background/an
   `,
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'PairPizzazz';
+
+  constructor(private healthService: HealthService) {}
+
+  ngOnInit() {
+    // Call health check on app initializationd to fix cold start of backend.
+    this.healthService.checkHealth();
+  }
 }
