@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
           <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
           </div>
-          <p class="loading-text">Analyzing your connection...</p>
+          <p class="loading-text">AI is analyzing your connection...</p>
         </div>
       } @else if (error) {
         <div class="error-container animate-slide-in">
@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
         </div>
       } @else if (result) {
         <div class="result-card animate-slide-up">
-          <h3 class="result-title animate-fade-in">Your Love Connection</h3>
+          <h3 class="result-title animate-fade-in">Love Connection</h3>
           <div class="result-content animate-fade-in">
             <p class="result-text">{{ result }}</p>
           </div>
@@ -109,12 +109,14 @@ import { CommonModule } from '@angular/common';
     }
 
     .result-title {
-      font-family: var(--font-fancy);
+      font-family: 'Great Vibes', cursive;
       color: var(--primary-color);
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 1.5rem;
       text-align: center;
       text-shadow: 2px 2px 4px rgba(123, 80, 156, 0.1);
+      font-weight: 400;
+      letter-spacing: 2px;
     }
 
     .result-content {

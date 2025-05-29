@@ -92,7 +92,8 @@ interface NameConnectionResponse {
               <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               Loading...
             } @else {
-              Discover Your Connection
+              <i class="bi bi-cpu"></i>
+              Discover Your AI Connection
             }
           </button>
         </form>
@@ -119,10 +120,13 @@ interface NameConnectionResponse {
     }
 
     .fancy-title {
-      font-family: var(--font-fancy);
-      font-size: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
       color: var(--primary-color);
       text-shadow: 2px 2px 4px rgba(123, 80, 156, 0.1);
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
     }
     
     .fancy-label {
