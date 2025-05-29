@@ -2,6 +2,11 @@
 
 PairPizzazz is a full-stack web app that creates meaningful connections between names by analyzing their meanings and origins. Built using Cursor and integrated with Perplexity's LLM API, the app generates insightful, uplifting connections between any two names. When users enter names, the app uses a carefully crafted system prompt to analyze name meanings, origins, and create thoughtful connections through historical, cultural, or symbolic harmony. This project serves as an experimental playground to explore LLM integration, prompt engineering, and creative UX applications of GenAI.
 
+## 🌐 Live Deployment
+
+- Frontend: [https://pairpizzazz.netlify.app](https://pairpizzazz.netlify.app)
+- Backend API: [https://pairpizzazz.onrender.com](https://pairpizzazz.onrender.com)
+
 ## 🚀 Features
 
 - AI-powered name meaning connections
