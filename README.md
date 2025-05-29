@@ -54,9 +54,39 @@ cd PairPizzazz
 
 ### Environment Setup
 
-1. Create a `.env` file in the backend directory with your Perplexity API key:
+1. Create a `.env` file in the backend directory with the following environment variables:
    ```bash
+   # Server Configuration
+   SERVER_PORT=8080
+
+   # Perplexity API Configuration
    PERPLEXITY_API_KEY=your_api_key_here
+   PERPLEXITY_API_URL=https://api.perplexity.ai/chat/completions
+   PERPLEXITY_API_MODEL=sonar-pro
+
+   # CORS Configuration
+   ALLOWED_ORIGINS=your_frontend_url
+   ```
+
+### Docker Deployment
+
+1. Build the Docker image:
+   ```bash
+   cd backend
+   docker build -t pairpizzazz-backend .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -d \
+     -p 8080:8080 \
+     -e SERVER_PORT=8080 \
+     -e PERPLEXITY_API_KEY=your_api_key_here \
+     -e PERPLEXITY_API_URL=https://api.perplexity.ai/chat/completions \
+     -e PERPLEXITY_API_MODEL=mixtral-8x7b-instruct \
+     -e ALLOWED_ORIGINS=your_frontend_url \
+     --name pairpizzazz-backend \
+     pairpizzazz-backend
    ```
 
 ### Frontend Setup
