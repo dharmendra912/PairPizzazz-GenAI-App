@@ -18,21 +18,34 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
       <h1 class="app-title animate-slide-down">
         <span class="gradient-text">Pair</span><span class="accent-text">Pizzazz</span>
       </h1>
-      <div class="form-container">
-        <app-name-form
-          (loadingChange)="onLoadingChange($event)"
-          (resultChange)="onResultChange($event)"
-          (errorChange)="onErrorChange($event)"
-        ></app-name-form>
-      </div>
-      <div class="results-container">
-        <app-results-display
-          [isLoading]="isLoading"
-          [result]="result"
-          [error]="error"
-          (onRetry)="retry()"
-        ></app-results-display>
-      </div>
+      
+      @if (!result && !error) {
+        <div class="form-container animate-fade-in">
+          <app-name-form
+            (loadingChange)="onLoadingChange($event)"
+            (resultChange)="onResultChange($event)"
+            (errorChange)="onErrorChange($event)"
+          ></app-name-form>
+        </div>
+      }
+
+      @if (result || error || isLoading) {
+        <div class="results-container animate-fade-in">
+          <app-results-display
+            [isLoading]="isLoading"
+            [result]="result"
+            [error]="error"
+            (onRetry)="retry()"
+          ></app-results-display>
+          
+          @if (result || error) {
+            <button class="back-button animate-fade-in" (click)="retry()">
+              <i class="bi bi-arrow-left"></i>
+              Try Another Pair
+            </button>
+          }
+        </div>
+      }
     </div>
   `,
   styles: [`
@@ -50,6 +63,29 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
 
     .results-container {
       margin-top: 2rem;
+      position: relative;
+    }
+
+    .back-button {
+      margin-top: 1.5rem;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-button:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(123, 80, 156, 0.2);
     }
 
     .app-title {
