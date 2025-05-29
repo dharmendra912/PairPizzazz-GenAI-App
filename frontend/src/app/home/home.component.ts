@@ -25,7 +25,7 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
           (errorChange)="onErrorChange($event)"
         ></app-name-form>
       </div>
-      <div class="results-container">
+      <div #resultsContainer class="results-container">
         <app-results-display
           [isLoading]="isLoading"
           [result]="result"

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -32,7 +32,7 @@ import { CommonModule } from '@angular/common';
       } @else if (result) {
         <div class="result-card animate-slide-up">
           <h3 class="result-title animate-fade-in">Love Connection</h3>
-          <div class="result-content animate-fade-in">
+          <div #resultContent class="result-content animate-fade-in">
             <p class="result-text">{{ result }}</p>
           </div>
         </div>
@@ -304,9 +304,25 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class ResultsDisplayComponent {
+export class ResultsDisplayComponent implements AfterViewChecked {
+  @ViewChild('resultContent') resultContent!: ElementRef;
   @Input() isLoading = false;
   @Input() error: string | null = null;
   @Input() result: string | null = null;
   @Output() onRetry = new EventEmitter<void>();
+
+  ngAfterViewChecked() {
+    if (this.result && this.resultContent) {
+      this.scrollToBottom();
+    }
+  }
+
+  private scrollToBottom(): void {
+    try {
+      const element = this.resultContent.nativeElement;
+      element.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    } catch (err) {
+      console.error('Error scrolling to bottom:', err);
+    }
+  }
 } 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
@@ -266,6 +266,7 @@ interface NameConnectionResponse {
   `]
 })
 export class NameFormComponent implements OnInit {
+  @ViewChild('resultsContainer') resultsContainer!: ElementRef;
   nameForm: FormGroup;
   isLoading = false;
   @Output() loadingChange = new EventEmitter<boolean>();
@@ -340,6 +341,11 @@ export class NameFormComponent implements OnInit {
           // Get the first value from the response map
           const result = Object.values(response)[0];
           this.resultChange.emit(result);
+          
+          // Scroll to results after a short delay to ensure DOM is updated
+          setTimeout(() => {
+            this.resultsContainer?.nativeElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
         },
         error: (error: any) => {
           console.error('API Error:', error);
