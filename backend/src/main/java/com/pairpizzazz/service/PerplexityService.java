@@ -36,7 +36,7 @@ public class PerplexityService {
                 " using simple language, highlight positive qualities, and conclude with an encouraging statement that makes" +
                 " users proud of their name choices. If no direct connection exists, invent a thoughtful pairing based on" +
                 " meanings while clearly distinguishing factual origins from creative interpretation." +
-                " Add logical and honest name match percentage in last (irrespective of text above) with reason." +
+                " Add logical and honest name match percentage in last (irrespective of other part of response) with reason." +
                 " Important: Do not show your thinking, reasoning, steps, or any explanation." +
                 " Only output the final single-paragraph story as specified." +
                 " Do not include any introductory, closing or process statements.");
