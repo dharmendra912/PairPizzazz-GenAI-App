@@ -27,13 +27,13 @@ public class NameController {
     public ResponseEntity<Map<String, String>> getNamesConnection(
             @RequestParam String name1,
             @RequestParam String name2) {
-        logger.debug("Received request for names: {} and {}", name1, name2);
+        logger.info("Received request for names: {} and {}", name1, name2);
         try {
             Map<String, String> response = nameService.getNamesConnection(name1, name2);
             logger.debug("Successfully generated connection for names");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            logger.debug("Error processing request", e);
+            logger.error("Error processing request", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
                     "Error processing request: " + e.getMessage());
         }
@@ -46,7 +46,7 @@ public class NameController {
             List<UserSubmission> submissions = nameService.getAllSubmissions();
             return ResponseEntity.ok(submissions);
         } catch (Exception e) {
-            logger.debug("Error retrieving stats", e);
+            logger.error("Error retrieving stats", e);
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
                     "Error retrieving stats: " + e.getMessage());
         }

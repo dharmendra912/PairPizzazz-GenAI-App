@@ -1,6 +1,5 @@
 package com.pairpizzazz.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pairpizzazz.config.PerplexityConfig;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,12 +16,10 @@ public class PerplexityService {
 
     private final PerplexityConfig config;
     private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
 
     public PerplexityService(PerplexityConfig config) {
         this.config = config;
         this.restTemplate = new RestTemplate();
-        this.objectMapper = new ObjectMapper();
     }
 
     public Map<String, String> getNamesConnection(String name1, String name2) {
@@ -33,12 +30,13 @@ public class PerplexityService {
         Map<String, Object> systemMessage = new HashMap<>();
         systemMessage.put("role", "system");
         systemMessage.put("content", "You are an expert specializing in connecting name meanings." +
-                " When given two names, generate a single paragraph, no longer than 150 words that starts with both names," +
+                " When given two names, generate a single paragraph, no longer than 200 words that starts with both names," +
                 " briefly explains their individual meanings/origins, then creatively links them through historical/cultural" +
                 " connections (if any exist) or imaginative symbolic harmony. Always maintain an uplifting, inclusive tone" +
                 " using simple language, highlight positive qualities, and conclude with an encouraging statement that makes" +
                 " users proud of their name choices. If no direct connection exists, invent a thoughtful pairing based on" +
-                " meanings while clearly distinguishing factual origins from creative interpretation. Also add match percentage in last." +
+                " meanings while clearly distinguishing factual origins from creative interpretation." +
+                " Add logical and honest name match percentage in last (irrespective of text above) with reason." +
                 " Important: Do not show your thinking, reasoning, steps, or any explanation." +
                 " Only output the final single-paragraph story as specified." +
                 " Do not include any introductory, closing or process statements.");

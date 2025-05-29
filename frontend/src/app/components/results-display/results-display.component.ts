@@ -9,8 +9,10 @@ import { CommonModule } from '@angular/common';
     <div class="results-wrapper animate-fade-in">
       @if (isLoading) {
         <div class="loading-container animate-pulse">
-          <div class="spinner-border text-primary" role="status">
-            <span class="visually-hidden">Loading...</span>
+          <div class="ai-loading">
+            <i class="bi bi-cpu-fill"></i>
+            <i class="bi bi-robot"></i>
+            <i class="bi bi-braces-asterisk"></i>
           </div>
           <p class="loading-text">AI is analyzing your connection...</p>
         </div>
@@ -47,10 +49,45 @@ import { CommonModule } from '@angular/common';
       padding: 2rem;
     }
 
-    .spinner-border {
-      width: 3rem;
-      height: 3rem;
+    .ai-loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .ai-loading i {
+      font-size: 2rem;
       color: var(--primary-color);
+      animation: aiPulse 1.5s ease-in-out infinite;
+    }
+
+    .ai-loading i:nth-child(1) {
+      animation-delay: 0s;
+    }
+
+    .ai-loading i:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .ai-loading i:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    @keyframes aiPulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     .loading-text {
