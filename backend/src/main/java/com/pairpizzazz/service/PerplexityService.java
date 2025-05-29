@@ -38,7 +38,7 @@ public class PerplexityService {
                 " connections (if any exist) or imaginative symbolic harmony. Always maintain an uplifting, inclusive tone" +
                 " using simple language, highlight positive qualities, and conclude with an encouraging statement that makes" +
                 " users proud of their name choices. If no direct connection exists, invent a thoughtful pairing based on" +
-                " meanings while clearly distinguishing factual origins from creative interpretation." +
+                " meanings while clearly distinguishing factual origins from creative interpretation. Also add match percentage in last." +
                 " Important: Do not show your thinking, reasoning, steps, or any explanation." +
                 " Only output the final single-paragraph story as specified." +
                 " Do not include any introductory, closing or process statements.");
