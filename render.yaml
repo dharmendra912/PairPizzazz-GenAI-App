@@ -1,6 +1,7 @@
 services:
   - type: web
     name: spring-backend
+    runtime: docker
     plan: free
     rootDir: backend
     dockerfilePath: Dockerfile
