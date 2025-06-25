@@ -20,24 +20,44 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
       </h1>
       <div class="form-container">
         <app-name-form
-          (loadingChange)="onLoadingChange($event)"
-          (resultChange)="onResultChange($event)"
-          (errorChange)="onErrorChange($event)"
+            (loadingChange)="onLoadingChange($event)"
+            (resultChange)="onResultChange($event)"
+            (errorChange)="onErrorChange($event)"
         ></app-name-form>
       </div>
-      <ng-container *ngIf="showDescription">
+      <ng-container *ngIf="showDescriptionAndDisclaimer">
         <div class="app-description animate-fade-in">
-        <p>
-          Discover your connection with PairPizzazz! Enter two names to instantly reveal your compatibility, love match, or friendship score using advanced AI-powered name analysis. Perfect for couples, friends, and anyone curious about their name chemistry. Try it now and share the fun!
-        </p>
+          <p>
+            PairPizzazz is the free AI love compatibility test that instantly uncovers your name compatibility and
+            hidden chemistry.
+            Simply enter two names to receive a love match score<a href="#disclaimer"><sup>*</sup></a>, friendship score, and concise insight into how your
+            name meanings and origins align—perfect for couples, friends, families, and anyone curious about their
+            relationship compatibility.
+          </p>
+          <p>
+            Our AI delivers a concise, personalized compatibility result with an honest match percentage.
+            Discover why PairPizzazz is fast becoming the go-to tool for love matching, friendship scoring, and
+            relationship compatibility online—try the free name compatibility test today!
+          </p>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="showDescriptionAndDisclaimer">
+        <div id="disclaimer" class="app-disclaimer">
+          <span aria-label="warning" style="font-size:1.3em;line-height:1.1;">⚠️</span>
+          <p>
+            Disclaimer: PairPizzazz provides AI-generated name compatibility insights for entertainment and curiosity
+            only. The analyses are based on creative interpretations of name meanings and public data, and they should
+            not be taken as professional advice, scientific fact, or a guarantee of relationship outcomes. Use your own
+            judgment and enjoy responsibly.
+          </p>
         </div>
       </ng-container>
       <div #resultsContainer class="results-container">
         <app-results-display
-          [isLoading]="isLoading"
-          [result]="result"
-          [error]="error"
-          (onRetry)="retry()"
+            [isLoading]="isLoading"
+            [result]="result"
+            [error]="error"
+            (onRetry)="retry()"
         ></app-results-display>
       </div>
     </div>
@@ -144,36 +164,65 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
       box-shadow: 0 2px 12px rgba(123, 80, 156, 0.07);
       text-align: center;
     }
+
+    .app-disclaimer {
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+      color: #a67c52;
+      background: #fffbe6;
+      border: 2px dashed #ffe066;
+      border-radius: 10px;
+      padding: 1rem 0.75rem;
+      text-align: center;
+      font-style: italic;
+      box-shadow: none;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+
+    .app-disclaimer p {
+      margin: 0;
+      display: inline;
+    }
+
+    .app-description a {
+      text-decoration: none;
+    }
+    .app-description a sup {
+      text-decoration: none;
+    }
   `]
 })
 export class HomeComponent {
   isLoading = false;
   result: string | null = null;
   error: string | null = null;
-  showDescription = true;
+  showDescriptionAndDisclaimer = true;
 
   onLoadingChange(isLoading: boolean) {
     console.log('Loading state changed:', isLoading);
     this.isLoading = isLoading;
-    this.showDescription = false;
+    this.showDescriptionAndDisclaimer = false;
   }
 
   onResultChange(result: string | null) {
     console.log('Result received:', result);
     this.result = result;
-    this.showDescription = false;
+    this.showDescriptionAndDisclaimer = false;
   }
 
   onErrorChange(error: string | null) {
     console.log('Error received:', error);
     this.error = error;
-    this.showDescription = false;
+    this.showDescriptionAndDisclaimer = false;
   }
 
   retry() {
     console.log('Retrying...');
     this.error = null;
     this.result = null;
-    this.showDescription = false;
+    this.showDescriptionAndDisclaimer = false;
   }
 } 
