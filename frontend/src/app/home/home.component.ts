@@ -25,6 +25,13 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
           (errorChange)="onErrorChange($event)"
         ></app-name-form>
       </div>
+      <ng-container *ngIf="showDescription">
+        <div class="app-description animate-fade-in">
+        <p>
+          Discover your connection with PairPizzazz! Enter two names to instantly reveal your compatibility, love match, or friendship score using advanced AI-powered name analysis. Perfect for couples, friends, and anyone curious about their name chemistry. Try it now and share the fun!
+        </p>
+        </div>
+      </ng-container>
       <div #resultsContainer class="results-container">
         <app-results-display
           [isLoading]="isLoading"
@@ -126,31 +133,47 @@ import { ResultsDisplayComponent } from '../components/results-display/results-d
         font-size: 3.5rem;
       }
     }
+
+    .app-description {
+      margin: 0 auto 2rem auto;
+      font-size: 1.25rem;
+      color: #6d3576;
+      background: rgba(255,255,255,0.85);
+      border-radius: 10px;
+      padding: 1.5rem 1rem;
+      box-shadow: 0 2px 12px rgba(123, 80, 156, 0.07);
+      text-align: center;
+    }
   `]
 })
 export class HomeComponent {
   isLoading = false;
   result: string | null = null;
   error: string | null = null;
+  showDescription = true;
 
   onLoadingChange(isLoading: boolean) {
     console.log('Loading state changed:', isLoading);
     this.isLoading = isLoading;
+    this.showDescription = false;
   }
 
   onResultChange(result: string | null) {
     console.log('Result received:', result);
     this.result = result;
+    this.showDescription = false;
   }
 
   onErrorChange(error: string | null) {
     console.log('Error received:', error);
     this.error = error;
+    this.showDescription = false;
   }
 
   retry() {
     console.log('Retrying...');
     this.error = null;
     this.result = null;
+    this.showDescription = false;
   }
 } 
